@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    name:{
+    username:{
         type:String,
         required:true
     },
@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type:String,
-        unique:true,
+        unique:[true,"Email id already registered"],
         require:true
     },
 },{ timeStamp:true})
