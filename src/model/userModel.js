@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
         unique:[true,"Email id already registered"],
         require:true
     },
+    role:{
+        type:String,
+        enum:['admin','manager','user'],
+        require:true
+    }
 },{ timeStamp:true})
 const User = mongoose.model('User' , userSchema);
 module.exports = User;

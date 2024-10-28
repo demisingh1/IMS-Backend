@@ -4,6 +4,7 @@ const http = require('http')
 const {Server} = require('socket.io');
 const route  = require('./routes/loginrout');
 const dbrun = require('./utils/databaseConnection');
+const dash = require('./routes/Dashboard');
 
 const app = express()
 const server = http.createServer(app)
@@ -35,6 +36,7 @@ app.use((err,req,res,next)=>{
 //     res.json({message:"hello"});
 // });
 app.use('/', route);
+app.use('/', dash)
 
 // server listen
 const port = process.env.PORT || 8001
