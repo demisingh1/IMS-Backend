@@ -30,4 +30,8 @@ const singnup = asyncHandlertry (async(req, res)=>{
     res.status(200).json({message:token});
 })
 
+const logOut = (req, res)=>{
+   // for logout Store the token in the local storage and them delete the local storage.
+}
+
 module.exports = {singnup, login}
