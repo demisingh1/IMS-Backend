@@ -1,3 +1,6 @@
+// To update the inventory, Update it when new billing available
+// whether the billing from supplier or whether the product is sold
+
 const mongoose = require('mongoose')
 
 const InvertorySchema = new mongoose.Schema({

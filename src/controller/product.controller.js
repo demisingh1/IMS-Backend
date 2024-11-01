@@ -12,4 +12,11 @@ const addProduct =asyncHandlertry (async (req, res)=>{
     res.status(200).json({message: product});
 })
 
+//display seleted product
+
+// update product
+
+// delete product
+
+
 module.exports = {getAllProducts, addProduct}

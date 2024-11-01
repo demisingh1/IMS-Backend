@@ -6,4 +6,11 @@ const createSupplier = async(req, res)=>{
  res.status(200).json({message:supplier});
 }
 
+// Display all supliers
+
+// display single supplier
+
+// Edit supplier
+
+// Update supplier
 module.exports = {createSupplier}
