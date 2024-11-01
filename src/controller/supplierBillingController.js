@@ -1,4 +1,4 @@
-const getBilling = require("../model/getBilling");
+const getBilling = require("../model/supplierBilling");
 const Inverntory = require("../model/inventoryModel");
 
 const addBill = async (req,res)=>{

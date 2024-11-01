@@ -1,5 +1,5 @@
 const express = require('express');
-const { addBill, showBills } = require('../controller/billingController');
+const { addBill, showBills } = require('../controller/supplierBillingController');
 const billingRoute = express.Router()
 
 billingRoute.get('/addbill', showBills)
