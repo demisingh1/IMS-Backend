@@ -10,7 +10,7 @@ const asyncHandlertry = (fn)=>{
             try {
               await fn(req, res ,next)
             } catch (error) {
-              res.status(400).json({message:error})
+              res.status(400).json({message:error, er:"hello from asynnc error"})
             }
       }
 }
