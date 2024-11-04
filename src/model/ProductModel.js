@@ -11,9 +11,3 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product' , productSchema);
 module.exports = Product;
-// name: { type: String, required: true },
-// description: { type: String },
-// SKU: { type: String, unique: true, required: true }, // Stock Keeping Unit
-// price: { type: Number, required: true },
-// category: { type: String },
-// supplier: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier' },

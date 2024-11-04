@@ -2,12 +2,14 @@ require('dotenv').config();
 const express = require('express')
 const http = require('http')
 const {Server} = require('socket.io');
+const cookieParser = require('cookie-parser');
 const route  = require('./routes/loginrout');
 const dbrun = require('./utils/databaseConnection');
 const dash = require('./routes/Dashboard');
 const prodRoutes = require('./routes/Product');
 const billingRoute = require('./routes/Billing');
 const supplierRoute = require('./routes/supplier');
+
 
 const app = express()
 const server = http.createServer(app)
@@ -27,6 +29,7 @@ io.on("connection", (socket)=>{
 // app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(cookieParser())
 
 app.use((err,req,res,next)=>{
     console.log(err);

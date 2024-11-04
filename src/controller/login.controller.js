@@ -27,11 +27,17 @@ const singnup = asyncHandlertry (async(req, res)=>{
        return res.status(401).json({message:"password or email id is worng"})
     }
    const token = jwt.sign({id:getUser._id, name:getUser.name}, process.env.JWTSECRECT, {expiresIn:'1h'})
+   res.cookie('token', token,{
+      maxAge: 36000,
+      httpOnly:false
+   })
     res.status(200).json({message:token});
 })
 
 const logOut = (req, res)=>{
-   // for logout Store the token in the local storage and them delete the local storage.
+   // for logout clear the cookie
+   res.clearCookie('token');
+   res.status(200).json({message: 'Logout sucessfully'})
 }
 
-module.exports = {singnup, login}
+module.exports = {singnup, login, logOut}
