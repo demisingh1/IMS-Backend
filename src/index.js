@@ -2,8 +2,10 @@ require('dotenv').config();
 const express = require('express')
 const http = require('http')
 const {Server} = require('socket.io');
+var morgan = require('morgan')
 const cookieParser = require('cookie-parser');
-const route  = require('./routes/loginrout');
+const cors = require('cors')
+const login  = require('./routes/loginrout');
 const dbrun = require('./utils/databaseConnection');
 const dash = require('./routes/Dashboard');
 const prodRoutes = require('./routes/Product');
@@ -27,10 +29,18 @@ io.on("connection", (socket)=>{
 })
 // middle wares
 // app.use(cors())
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
-app.use(cookieParser())
 
+app.use(morgan('combined'))
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cookieParser())
+app.use(cors(
+    {
+        origin: 'http://localhost:3000', // React's frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  credentials: true
+    }
+))
 app.use((err,req,res,next)=>{
     console.log(err);
     res.json({message:'Something went wrong'});
@@ -41,7 +51,7 @@ app.use((err,req,res,next)=>{
 //     console.log("hello");
 //     res.json({message:"hello"});
 // });
-app.use('/', route);
+app.use('/', login);
 app.use('/', dash);
 app.use('/',prodRoutes);
 app.use('/',billingRoute)

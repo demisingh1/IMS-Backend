@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 const singnup = asyncHandlertry (async(req, res)=>{
+   console.log(req.body);
    
     const{username, password, email,role} = req.body;
     let hashPswd = await bcrypt.hash(password , 8)
@@ -29,7 +30,9 @@ const singnup = asyncHandlertry (async(req, res)=>{
    const token = jwt.sign({id:getUser._id, name:getUser.name}, process.env.JWTSECRECT, {expiresIn:'1h'})
    res.cookie('token', token,{
       maxAge: 36000,
-      httpOnly:false
+      httpOnly:true,
+      secure:false, // only when https protocole is used TRUE
+      // sameSite: "none" // do not use
    })
     res.status(200).json({message:token});
 })
